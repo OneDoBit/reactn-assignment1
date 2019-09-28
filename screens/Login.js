@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, TextInput, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Image, Button, TextInput, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Audio, Video } from 'expo-av';
 
 export default class LoginScreen extends Component {
@@ -9,26 +9,8 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Video
-          source={
-            // { uri: "url here" }
-            require('../assets/earth.mp4') 
-          }
-          rate={1.0}
-          volume={1.0}
-          isMuted={false}
-          resizeMode="cover"
-          shouldPlay
-          isLooping
-          style={{ width: 200, height: 200, marginVertical: 40 }}
-        />
 
-        <Text>
-        {
-          // converts a object into a easily readable json string
-          JSON.stringify(this.state, null, 2)
-        }
-        </Text>
+        <Image style={{width: 300, height: 300}} source={require('../assets/N-Logo.png')}/>
 
         <TextInput 
         onChangeText={
@@ -36,14 +18,16 @@ export default class LoginScreen extends Component {
           text => this.setState({user: text})
         }
         style={styles.input}
-        placeholder="username"></TextInput>
+        placeholder="Enter Username">
+
+        </TextInput>
 
         <TextInput 
         onChangeText={
           text => this.setState({pass: text})
         } 
         style={styles.input} 
-        placeholder="password" 
+        placeholder="Enter Password" 
         secureTextEntry={true} // hide text
         ></TextInput>
 
@@ -54,7 +38,8 @@ export default class LoginScreen extends Component {
               () => this.props.navigation.navigate('App')
             }
             style={styles.h1} 
-            title="Login"
+            color="black"
+            title="Enter"
           />
         </View>
 
@@ -72,17 +57,21 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   container2: {
-    marginTop: 50
+    marginTop: 10,
+    width: "40%",
+    borderRadius: 50,
+    overflow: "hidden"
   },
   h1: {
-    fontSize: 24,
-    color: 'white',
+    fontSize: 20,
+    color: 'black',
     fontWeight: 'bold'
   },
   input: {
-    backgroundColor: 'gray',
+    backgroundColor: 'black',
     marginBottom: 20,
     padding: 10,
-    width: '100%'
+    width: '60%',
+    borderRadius: 50
   }
 });
