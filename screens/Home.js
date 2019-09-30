@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
-import Data from '.app.jsonn'
+// import Data from '.app.json'
 // import { Ionicons } from '@expo/vector-icons';
 
 class HomeScreen extends React.Component {
