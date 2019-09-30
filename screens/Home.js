@@ -27,7 +27,7 @@ class HomeScreen extends React.Component {
       // </View>  
 
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>Ham!</Text>
+          <Text>Home!</Text>
         </View>
       );
     }
