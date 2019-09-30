@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image, Button, TextInput, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Audio, Video } from 'expo-av';
+import { Ionicons } from '@expo/vector-icons';
 
 export default class LoginScreen extends Component {
 
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     justifyContent: 'center',
-    marginTop: -100,
+    marginTop: -50,
     alignItems: 'center'
   },
   container2: {
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     width: '60%',
-    borderRadius: 50
+    borderRadius: 50,
+    color: 'white'
   }
 });

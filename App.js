@@ -1,14 +1,18 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
-import { fromLeft, zoomIn, flipX, flipY } from 'react-navigation-transitions';
+import { createStackNavigator, HeaderTitle } from 'react-navigation-stack';
+import { fromLeft, zoomIn, flipX, flipY, zoomOut, fadeOut } from 'react-navigation-transitions';
+import { Ionicons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import React, { Component } from 'react';
 
 import HomeScreen from './screens/Home';
 import SettingsScreen from './screens/Settings';
 import LoginScreen from './screens/Login';
 
 // Switch Navigator
-const AuthNavigator = createSwitchNavigator(
+const AuthNavigator = createSwitchNavigator ( 
   {
     Login: LoginScreen
   },
@@ -20,12 +24,21 @@ const AuthNavigator = createSwitchNavigator(
 // Tab Navigator
 const HomeNavigator = createBottomTabNavigator(
   {
-    Home: { screen: HomeScreen },
-    Settings: { screen: SettingsScreen },
+    Home: { screen: HomeScreen,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) => <Ionicons name="ios-home" size={32} color={tintColor} />,
+        }, 
+      },
+    About: { screen: SettingsScreen,
+      navigationOptions: {
+        activeTintColor: '#black',
+        tabBarIcon: ({tintColor}) => <Ionicons name="ios-person" size={32} color={tintColor} />
+        },
+      },
   },
   {
     initialRouteName: 'Home'
-  }
+  },
 )
 
 // app entry point
@@ -37,13 +50,21 @@ export default createAppContainer( // must have this wrapper (function) to have 
     },
     {
       initialRouteName: 'Auth', // which screen / navigations stack to begin with (string name is sensitive)
-      transitionConfig: () => zoomIn(), // screen to screen transitions
+      transitionConfig: () => fadeOut(), // screen to screen transitions
+      headerMode: 'none',
+
       navigationOptions: {
-        headerVisible: false, // remove top bar and make full screen
+        headerVisible: false,
+        showIcon: true,
       },
+
       defaultNavigationOptions: { // remove swipe back gesture
-        gesturesEnabled: false
-      }
+        gesturesEnabled: true,
+        showIcon: true 
+      },
+
+      tabBarOptions: {
+      }, 
     }
   )
 );
