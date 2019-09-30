@@ -19,7 +19,7 @@ export default class LoginScreen extends Component {
           text => this.setState({user: text})
         }
         style={styles.input}
-        placeholder="Enter Username">
+        placeholder="Enter Usernae">
 
         </TextInput>
 
